@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.badlogicgames.superjumper"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19"/>
+    
+    <!-- Required. Used to access the Internet to make network requests.  -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+    <!-- Optional - Used to check if an internet connection is available prior to make network requests -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- Optional - Used for Nextpeer Push Notification service, async-match invites -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />  
+    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application android:label="@string/app_name" android:allowBackup="true" android:icon="@drawable/icon">
+        <activity android:name=".SuperJumperAndroid"
+                  android:label="@string/app_name"
+                  android:configChanges="keyboard|keyboardHidden|orientation"
+                  android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+   		<!-- Nextpeer integration: Add the Nextpeer activity -->
+		<activity android:name="com.nextpeer.android.NextpeerActivity" android:screenOrientation="portrait" />
+   		<!-- Nextpeer integration -->
+   		
+   		<!-- Nextpeer integration: Add the Nextpeer Facebook activity -->
+        <activity android:name="com.nextpeer.android.facebook.LoginActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:label="@string/np__application_name" android:screenOrientation="portrait"/>
+   		<!-- Nextpeer integration -->
+        
+        <service android:name="com.nextpeer.android.NextpeerPushService" />
+        <receiver android:name="com.nextpeer.android.NextpeerBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest> 
