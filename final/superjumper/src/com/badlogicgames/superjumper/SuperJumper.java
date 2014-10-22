@@ -26,7 +26,6 @@ import com.nextpeer.libgdx.TournamentsCallback;
 public class SuperJumper extends Game{
 	boolean firstTimeCreate = true;
 	FPSLogger fps;
-	Tournaments tournaments = null;
 	
 	public SuperJumper() {
 		this(null);
@@ -36,8 +35,8 @@ public class SuperJumper extends Game{
 		
 		// If we have a supported tournaments object, set the game as callback
 		if (tournaments != null && tournaments.isSupported()) {
-			this.tournaments = tournaments;
-			this.tournaments.setTournamentsCallback(mNextpeerTournamentsCallback);
+			tournaments.setTournamentsCallback(mNextpeerTournamentsCallback);
+			NextpeerPlugin.load(tournaments);
 		}
 	}
 	
@@ -46,11 +45,6 @@ public class SuperJumper extends Game{
 		Settings.load();
 		Assets.load();
 
-		// Load the TournamentsCore if we have a valid implementation of it
-		if (this.tournaments != null) {
-			NextpeerPlugin.load(this.tournaments);
-		}
-		
 		setScreen(new MainMenuScreen(this));
 		fps = new FPSLogger();
 	}
