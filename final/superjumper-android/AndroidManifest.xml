@@ -3,7 +3,7 @@
       package="com.badlogicgames.superjumper"
       android:versionCode="1"
       android:versionName="1.0.0">
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19"/>
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="21"/>
     
     <!-- Required. Used to access the Internet to make network requests.  -->
     <uses-permission android:name="android.permission.INTERNET" />
